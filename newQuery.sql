@@ -1,3 +1,3 @@
 select 'hello, world' greeting, sysdate today , 'ais' department
-from dual;
+from dual, v$database;
 
