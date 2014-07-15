@@ -1,1 +1,3 @@
-select 'hello, world' greeting, sysdate today, 'ais' department from dual;
+select 'hello, world' greeting, sysdate today , 'ais' department
+from dual;
+
