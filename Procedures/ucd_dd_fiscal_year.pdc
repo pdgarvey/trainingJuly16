@@ -21,17 +21,7 @@ v_num_years NUMBER;
 v_curr_year NUMBER;
 
 BEGIN
-/* Returns the number of years as specified by the input parameter
-starting from the current fiscal years */
-v_curr_year := EXTRACT(YEAR FROM ROUND(SYSDATE, 'YYYY'));
-IF v_curr_year < 2022
-THEN v_num_years := (v_curr_year - 2014);
-ELSE v_num_years := ucd_f_to_number(i_num_years);
-END IF;
-OPEN rc1 FOR
-SELECT TO_CHAR(v_curr_year - ROWNUM + 1) AS fiscal_year
-FROM dual
-CONNECT BY ROWNUM <= v_num_years;
+return '2014' as fiscal year
 END ucd_dd_fiscal_year;
 /
   GRANT DEBUG ON "ADVANCE"."UCD_DD_FISCAL_YEAR" TO "ADVROLE";
