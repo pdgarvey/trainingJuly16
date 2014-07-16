@@ -21,7 +21,7 @@ v_num_years NUMBER;
 v_curr_year NUMBER;
 
 BEGIN
-return '2014'
+return '2014' as fiscal year
 END ucd_dd_fiscal_year;
 /
   GRANT DEBUG ON "ADVANCE"."UCD_DD_FISCAL_YEAR" TO "ADVROLE";
