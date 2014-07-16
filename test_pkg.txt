@@ -1,0 +1,4 @@
+Procedure A as
+begin
+	stuff
+end;
