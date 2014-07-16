@@ -1,0 +1,38 @@
+CREATE OR REPLACE PROCEDURE "ADVANCE"."UCD_DD_FISCAL_YEAR" 
+( i_num_years IN VARCHAR2 DEFAULT 10
+, rc1 OUT SYS_REFCURSOR ) AUTHID DEFINER
+
+
+IS
+/******************************************************************************************************
+-- PROCEDURE: UCD_DD_FISCAL_YEAR
+--
+-- Creates a list of fiscal years for a drop-down list. Does not include years prior to 2013
+--
+-- Revision History
+-- 5/2012 CTG Created
+-- 7/2012 AC Modified to limit output to 2013 +
+-- 8/2013 AC Modified to limit to 2014+
+-- 6/2014 PG Modified to freeze at 2014 past July 1
+-- 7/2014 PG Change default to 2015
+******************************************************************************************************/
+
+v_num_years NUMBER;
+v_curr_year NUMBER;
+
+BEGIN
+/* Returns the number of years as specified by the input parameter
+starting from the current fiscal years */
+v_curr_year := EXTRACT(YEAR FROM ROUND(SYSDATE, 'YYYY'));
+IF v_curr_year < 2022
+THEN v_num_years := (v_curr_year - 2014);
+ELSE v_num_years := ucd_f_to_number(i_num_years);
+END IF;
+OPEN rc1 FOR
+SELECT TO_CHAR(v_curr_year - ROWNUM + 1) AS fiscal_year
+FROM dual
+CONNECT BY ROWNUM <= v_num_years;
+END ucd_dd_fiscal_year;
+/
+  GRANT DEBUG ON "ADVANCE"."UCD_DD_FISCAL_YEAR" TO "ADVROLE";
+  GRANT EXECUTE ON "ADVANCE"."UCD_DD_FISCAL_YEAR" TO "ADVROLE";
