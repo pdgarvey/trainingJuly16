@@ -1,6 +1,6 @@
 Procedure C as
 begin
-	third commit stuff. let's see proc b and proc c compared to the version on master.
+	second commit stuff. let's see proc b and proc c compared to the version on master.
 end;
 
 Procedure A as
@@ -11,4 +11,5 @@ end;
 Procedure B as
 begin
 	other stuff, second commit
+	thirdcommit here, let's mod the same place.
 end;
