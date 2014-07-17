@@ -1,3 +1,8 @@
+Procedure C as
+begin
+	third commit stuff. let's see proc b and proc c compared to the version on master.
+end;
+
 Procedure A as
 begin
 	stuff
