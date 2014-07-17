@@ -2,3 +2,8 @@ Procedure A as
 begin
 	stuff
 end;
+
+Procedure B as
+begin
+	other stuff, second commit
+end;
